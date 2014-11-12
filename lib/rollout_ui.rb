@@ -30,6 +30,14 @@ module RolloutUi
     @@user_name_field ||= :id
   end
 
+  def self.find_by_text=(text)
+    @@find_by_text = text
+  end
+
+  def self.find_by_text
+    @@find_by_text ||= user_name_field.to_s.humanize.downcase
+  end
+
   def self.user_class=(user_class)
     @@user_class = user_class
   end
@@ -47,8 +55,8 @@ module RolloutUi
   end
 
   def self.find_user_ids(user_identifiers)
-    if @@user_name_field && user_identifiers.present?
-      user_class.where(@@user_name_field => user_identifiers).pluck(:id)
+    if @@user_name_field && user_identifiers.reject(&:empty?).present?
+      user_class.where(@@user_name_field => user_identifiers.reject(&:empty?)).pluck(:id)
     else
       user_identifiers
     end

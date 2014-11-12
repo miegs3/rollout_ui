@@ -68,7 +68,7 @@ module RolloutUi
 
       @feature.percentage = params["percentage"] if params["percentage"]
       @feature.groups     = params["groups"]     if params["groups"]
-      @feature.user_ids   = params["users"]      if params["users"]
+      @feature.user_names = params["users"]      if params["users"]
 
       redirect url_path
     end
