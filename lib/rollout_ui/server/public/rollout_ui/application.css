@@ -811,6 +811,9 @@ body {
   background: #232323 url(dark_brick_wall.png);
   color: #aeaeae;
 }
+body.production {
+  background: #700f00 url(red_brick_wall.png);
+}
 
 h1 img {
   height: 75px;
